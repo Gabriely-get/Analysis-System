@@ -12,4 +12,5 @@ public @Data class ItemSale {
         this.quantity = quantity;
         this.price = price;
     }
+
 }

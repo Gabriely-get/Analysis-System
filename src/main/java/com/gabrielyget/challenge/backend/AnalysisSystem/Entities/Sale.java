@@ -54,5 +54,4 @@ public @Data class Sale implements IDataType {
         return this.code;
     }
 
-
 }

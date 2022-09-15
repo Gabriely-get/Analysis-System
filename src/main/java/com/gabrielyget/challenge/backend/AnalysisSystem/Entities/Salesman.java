@@ -24,16 +24,6 @@ public @Data class Salesman implements IDataType {
         this.salary = salary;
     }
 
-    public Salesman(List<String> attributes) {
-        this.cpfValidation(attributes.get(1));
-        this.nameValidation(attributes.get(2));
-        this.salaryValidation(Double.parseDouble(attributes.get(3)));
-
-        this.cpf = attributes.get(1);
-        this.name = attributes.get(2);
-        this.salary = Double.parseDouble(attributes.get(3));
-    }
-
     private void cpfValidation(String cpf) {
         if (cpf == null || cpf.isBlank() || cpf.isEmpty()) {
             throw new IllegalArgumentException("CPF is irregular");

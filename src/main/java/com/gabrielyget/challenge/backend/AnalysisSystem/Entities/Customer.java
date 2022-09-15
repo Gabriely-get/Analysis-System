@@ -24,16 +24,6 @@ public @Data class Customer implements IDataType {
         this.businessArea = businessArea;
     }
 
-    public Customer(List<String> attributes) {
-        this.cnpjValidation(attributes.get(1));
-        this.nameValidation(attributes.get(2));
-        this.businessAreaValidation(attributes.get(3));
-
-        this.cnpj = attributes.get(1);
-        this.name = attributes.get(2);
-        this.businessArea = attributes.get(3);
-    }
-
     private void cnpjValidation(String cnpj) {
         if (cnpj == null || cnpj.isBlank() || cnpj.isEmpty()) {
             throw new IllegalArgumentException("CNPJ is irregular");
