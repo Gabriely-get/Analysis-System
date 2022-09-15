@@ -1,8 +1,6 @@
-package com.gabriely.challenge.backend.AnalysisSystem.Entities;
+package com.gabrielyget.challenge.backend.AnalysisSystem.Entities;
 
 import lombok.Data;
-
-import java.util.List;
 
 public @Data class Salesman implements IDataType {
     private final String code = DataTypeCode.getSALESMAN_CODE();

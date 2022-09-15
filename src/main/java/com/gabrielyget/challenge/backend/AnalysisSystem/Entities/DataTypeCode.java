@@ -1,4 +1,4 @@
-package com.gabriely.challenge.backend.AnalysisSystem.Entities;
+package com.gabrielyget.challenge.backend.AnalysisSystem.Entities;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

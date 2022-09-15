@@ -1,8 +1,8 @@
-package com.gabriely.challenge.backend.AnalysisSystem.Entities;
+package com.gabrielyget.challenge.backend.AnalysisSystem.Entities;
 
 import lombok.Data;
 
-import java.util.List;
+import java.util.Objects;
 
 public @Data class Customer implements IDataType {
     private final String code = DataTypeCode.getCUSTOMER_CODE();
@@ -36,7 +36,7 @@ public @Data class Customer implements IDataType {
     }
 
     private void nameValidation(String name) {
-        if (name == null || name.isBlank() || name.isEmpty()) {
+        if (Objects.isNull(name) || name.isBlank() || name.isEmpty()) {
             throw new IllegalArgumentException("Name is irregular");
         }
     }
