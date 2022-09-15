@@ -1,11 +1,9 @@
 package com.gabrielyget.challenge.backend.AnalysisSystem.Utils;
 
-import com.gabrielyget.challenge.backend.AnalysisSystem.Entities.DataTypeCode;
 import com.gabrielyget.challenge.backend.AnalysisSystem.Entities.Customer;
+import com.gabrielyget.challenge.backend.AnalysisSystem.Entities.DataTypeCode;
 import com.gabrielyget.challenge.backend.AnalysisSystem.Entities.Sale;
 import com.gabrielyget.challenge.backend.AnalysisSystem.Entities.Salesman;
-
-import java.util.stream.Collectors;
 
 public class FileValidation {
 
