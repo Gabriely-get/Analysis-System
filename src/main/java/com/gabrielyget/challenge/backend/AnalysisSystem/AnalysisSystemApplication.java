@@ -25,9 +25,7 @@ public class AnalysisSystemApplication {
 		);
 		reportFileService.generateReportOfAllFilesInFolder(folderIn);
 
-		new WatchService(
-				reportFileService
-		).watchFolder(folderIn);
+		new WatchService().watchFolder(folderIn);
 
 	}
 

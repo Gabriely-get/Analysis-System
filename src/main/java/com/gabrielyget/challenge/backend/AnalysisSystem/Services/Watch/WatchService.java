@@ -1,6 +1,10 @@
 package com.gabrielyget.challenge.backend.AnalysisSystem.Services.Watch;
 
+import com.gabrielyget.challenge.backend.AnalysisSystem.Services.DataType.CustomerService;
+import com.gabrielyget.challenge.backend.AnalysisSystem.Services.DataType.SaleService;
+import com.gabrielyget.challenge.backend.AnalysisSystem.Services.DataType.SalesmanService;
 import com.gabrielyget.challenge.backend.AnalysisSystem.Services.File.ReportFileService;
+import com.gabrielyget.challenge.backend.AnalysisSystem.Services.File.SplitFileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,11 +17,11 @@ import static java.nio.file.StandardWatchEventKinds.*;
 public class WatchService implements IWatchService {
     private static final Logger LOGGER = LoggerFactory.getLogger(WatchService.class);
 
-    private final ReportFileService reportFileService;
-
-    public WatchService(ReportFileService reportFileService) {
-        this.reportFileService = reportFileService;
-    }
+    private final ReportFileService reportFileService = new ReportFileService(
+            new CustomerService(new SplitFileService()),
+            new SalesmanService(new SplitFileService()),
+            new SaleService(new SplitFileService())
+    );
 
     @Override
     public void watchFolder(String path) {
@@ -36,7 +40,7 @@ public class WatchService implements IWatchService {
                     if (event.kind().equals(ENTRY_CREATE) || event.kind().equals(ENTRY_MODIFY)) {
 
                         if (fileExists.exists()) {
-                            this.reportFileService.generateReportOfFile(fileName);
+                            this.reportFileService.generateReportOfAllFilesInFolder(path);
                         }
 
                     }

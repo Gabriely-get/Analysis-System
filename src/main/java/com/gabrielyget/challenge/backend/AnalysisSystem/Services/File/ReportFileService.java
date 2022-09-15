@@ -86,10 +86,13 @@ public class ReportFileService {
 
     private long getAmountOfDistinctClientsInFile(String filePath) throws IOException {
         List<Customer> customers = customerService.getAllCustomersInFile(filePath);
+        long amount = -1;
 
-        if (customers.isEmpty()) return -1;
+        if (customers.isEmpty()) amount = -1;
+        else if (customers.size() == 1) amount = 1;
+        else amount = customers.stream().map(Customer::getCnpj).distinct().count();
 
-        return customers.stream().map(Customer::getCnpj).distinct().count();
+        return amount;
     }
 
     private long getAmountOfSalesmanInFile(String filePath) {
@@ -98,9 +101,13 @@ public class ReportFileService {
 
     private long getAmountOfDistinctSalesmanInFile(String filePath) throws IOException {
         List<Salesman> salesmanList = salesmanService.getAllSalesmanInFile(filePath);
-        if (salesmanList.isEmpty()) return -1;
+        long amount;
 
-        return salesmanList.stream().map(Salesman::getCpf).distinct().count();
+        if (salesmanList.isEmpty()) amount = -1;
+        else if (salesmanList.size() == 1) amount = 1;
+        else amount = salesmanList.stream().map(Salesman::getCpf).distinct().count();
+
+        return amount;
     }
 
     private String getMostExpensiveSaleId(String filePath) throws IOException {
